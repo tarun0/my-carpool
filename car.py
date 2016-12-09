@@ -14,15 +14,7 @@ from urllib2 import urlopen
 import os
 import webbrowser
 firebase = firebase.FirebaseApplication('https://playgroundabir.firebaseio.com/', None)
-def getMyResp(p):
-	keys  = eval(getResp("Keys"))
-	for item in keys:
-		if item in p:
-			arrR = eval(getResp(item))
-			resP = arrR[random.randint(0, len(arrR)-1)]
-			b = resP[1:]
-			return b
-	return ""
+
 def getResp(phrase):
 	a = firebase.get(phrase,None)
 	if a == None:
@@ -35,18 +27,26 @@ def getResp(phrase):
 		keys.append(key)
 	return a[keys[0]]
 def putInFirebase(phrase,response):
-	phrase = phrase.lower()
 	phrase = phrase.strip()
 	if getResp(phrase) == None:
-		response = "['"+response+"']"
+		a = eval(getResp("trips"))
+		if response in a and phrase == "trips":
+			return 0
+		if len(response) > 1:
+			if response[0] == "'":
+				response =  "["+response+"]"
+			else:
+				response = "['"+response+"']"
+		else:
+			response = "[]"
 		firebase.post(phrase,response)
-		keys = eval(getResp("Keys"))
-		keys.append(phrase)
-		firebase.delete("Keys",None)
-		firebase.post("Keys",str(keys))
+		
 		
 		return 1
 	else:
+		a = eval(getResp("trips"))
+		if response in a and phrase == "trips":
+			return 0
 		print "1"
 		a = eval(getResp(phrase))
 		r = eval(getResp(phrase))
@@ -62,4 +62,63 @@ def putInFirebase(phrase,response):
 		firebase.post(phrase,str(a))
 		print "5"
 		return len(a)
+
+
+def addTrip(name,departure,arrival,price,numSeats,tripPass,bags,summ,youInfo,departDate,closeDate):
+	if putInFirebase("trips",str(name)) == 0:
+		return "Error"
+	a = "'"+price+"','"+departure+"','"+arrival+"','"+numSeats+"'"
+	b = "'"+bags+"','"+departDate+"','"+summ+"','"+youInfo+"','"+tripPass+"','"+closeDate+"'"
+	putInFirebase(name+"Glance",a)
+	putInFirebase(name+"Info",b)
+	putInFirebase(name+"applicants","")
+	return "Succ"
+def tripLoginCheck(name,passw):
+	a = eval(str(getResp(name+"Info")))
+	if a == None:
+		return False
+
+	return passw == a[4] 
+
+def getTripInfo(name):
+
+	glace = eval(str(getResp(name+"Glance")))
+
+	info = eval(str(getResp(name+"Info")))
+	price = glace[0]
+	departure = glace[1]
+	arrival = glace[2]
+	numSeats = glace[3]
+	bags = info[0]
+	departDate = info[1]
+	summ = info[2]
+	youInfo = info[3]
+	return price,departure,arrival,numSeats,bags,departDate,summ,youInfo
+def addApplicant(tripName,name,phone,email,mess):
+	a = [name,phone,email,mess]
+	putInFirebase(tripName+"applicants",str(a))
+def getApplicants(tripName):
+	a = eval(getResp(tripName+"applicants"))
+	for i in range(len(a)):
+		a[i] = eval(a[i])
+	return a
+
+
+#addApplicant("Abirs Trip","Abir","713-231-7925","shukla14@purdue.edu","I would love to be a part of this")
+
+#addApplicant("Abirs Trip","Chini","71323112","chini@gmail.com","This is dope")
+"""a = eval(getResp("Abirs Tripapplicants"))
+for i in range(len(a)):
+	a[i] = eval(a[i])
+print a[1][2]
+"""
+#print getTripInfo("Abirs Trip")
+
+#addTrip("Abirs Trip","Houston","Purdue","10","2","abiraadi","2","This is a Summary","This is me","2016/07/04","2016/06/04")
+
+#print str(getResp("Abirs TripGlance"))
+
+
+
+
 

@@ -50,8 +50,8 @@
         <section class="section">
             <div class="container">
                 <header class="section__title section__title-alt">
-                    <h2>Trip Name</h2>
-                    <small>Departure - Arrival</small>
+                    <h2>{{name}}</h2>
+                    <small>{{departure}} - {{arrival}}</small>
 
                     <div class="actions actions--section">
                         
@@ -81,8 +81,8 @@ Tweet</a>
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active light-gallery" id="detail-media-images">
                                        <iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCR52z8Tz1O4KR_BD3w95O6bvSJAh4XVwE
-                                       &origin=2522+Clawson+Falls+Sugar+Land+Texas
-                                       &destination=NASA" width="750" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                       &origin={{googleD}}
+                                       &destination={{googleA}}" width="750" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                     </div>
                                    
                                 </div>
@@ -92,22 +92,22 @@ Tweet</a>
 
                             <div class="detail-info">
                                 <div class="detail-info__header clearfix">
-                                    <strong>Price: $1235</strong>
+                                    <strong>Price: ${{price}}</strong>
 
                                 </div>
 
                                 <ul class="detail-info__list clearfix">
                                     <li>
                                         <span>Seats Available</span>
-                                        <span>3</span>
+                                        <span>{{numSeats}}</span>
                                     </li>
                                     <li>
                                         <span>Passenger</span>
-                                        <span>2</span>
+                                        <span>{{bags}}</span>
                                     </li>
                                     <li>
                                         <span>Date of Trip</span>
-                                        <span>04/20/16</span>
+                                        <span>{{departDate}}</span>
                                     </li>
                                   
                                   
@@ -121,8 +121,7 @@ Tweet</a>
                                 <h2>More about The Trip</h2>
                             </div>
                             <div class="card__body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                <p>{{summ}}</p>
                             </div>
                         </div>
 
@@ -132,8 +131,7 @@ Tweet</a>
                                 <h2>More about Me</h2>
                             </div>
                             <div class="card__body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                <p>{{youInfo}}</p>
                             </div>
                         </div>
 
@@ -141,31 +139,35 @@ Tweet</a>
                     </div>
 
                     <div id="inquire" class="col-md-4 rmd-sidebar-mobile">
-                        <form class="card hidden-print">
+                        <form class="card hidden-print" action="/carpool/applyForTrip/" method="POST">
+                        <input type="hidden" name="tripName" value="{{name}}">
                             <div class="card__header">
-                                <h2>Apply for Trip</h2>
+                                <h2>Apply for Trip</h2><br/>
+                                <p style="color:{{col}}">{{message}}</p>
                             </div>
 
                             <div class="card__body">
                                 
 
                                 <div class="form-group form-group--float">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="name">
                                     <label>Name</label>
                                     <i class="form-group__bar"></i>
                                 </div>
                                 <div class="form-group form-group--float">
-                                    <input type="text" class="form-control">
+                                    <input type="email" class="form-control" name="email">
                                     <label>Email Address</label>
                                     <i class="form-group__bar"></i>
                                 </div>
                                 <div class="form-group form-group--float">
-                                    <input type="text" class="form-control">
+                                    <input type="tel" class="form-control" name="phone">
+
                                     <label>Contact Number</label>
                                     <i class="form-group__bar"></i>
                                 </div>
+
                                 <div class="form-group form-group--float">
-                                    <textarea class="form-control" rows="6">Hi there, I am interested in your trip.</textarea>
+                                    <textarea class="form-control" rows="6" name="mess">Hi there, I am interested in your trip.</textarea>
                                     <label>Message To Driver</label>
                                     <i class="form-group__bar"></i>
                                 </div>

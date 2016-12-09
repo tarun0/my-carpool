@@ -45,6 +45,7 @@
                 <header class="section__title">
                     <h2>Trip Login</h2>
                     <small>Let's get this show on the road</small>
+                    <h4 style="color:red">{{mess}}</h4>
                 </header>
 
                 <div class="submit-property">
@@ -57,15 +58,15 @@
                                     <h2>Trip Login</h2>
                                 </div>
 
-                                <form class="card__body">
+                                <form class="card__body" action="/carpool/loginTrip/" method="POST">
                                     <div class="form-group form-group--float m-b-5">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="name">
                                         <i class="form-group__bar"></i>
                                         <label>Name of Your Trip</label>
                                     </div>
                                         <br/><br/><br/>
                                          <div class="form-group form-group--float m-b-5">
-                                        <input type="text" class="form-control">
+                                        <input type="password" class="form-control" name="passw">
                                         <i class="form-group__bar"></i>
                                         <label>Trip Password</label>
                                     </div>

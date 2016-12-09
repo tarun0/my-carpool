@@ -47,45 +47,22 @@
                 </header>
 
                
-
-                        <div class="card">
+{% for app in applicants %}
+          <div class="card">
                             <div class="card__header">
-                                <h2>More about The Trip</h2>
+                                <h2>{{app[0]}}</h2>
                                 <hr/>
                             </div>
                             <div class="card__body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                <p>{{app[3]}}</p>
+                               
+                                <p> Email: {{app[2]}}, Phone: {{app[1]}}</p>
+                                <hr/>
 
                                     <a href="/search/"><button class="btn btn-danger">Remove</button></a>
                             </div>
                         </div>
-
-                         <div class="card">
-                            <div class="card__header">
-                                <h2>More about The Trip</h2>
-                                <hr/>
-                            </div>
-                            <div class="card__body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla.</p>
-
-                                    <a href="/search/"><button class="btn btn-danger">Remove</button></a>
-                            </div>
-                        </div>
-
-                         <div class="card">
-                            <div class="card__header">
-                                <h2>More about The Trip</h2>
-                                <hr/>
-                            </div>
-                            <div class="card__body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-                                <p>Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla.</p>
-
-                                    <a href="/search/"><button class="btn btn-danger">Remove</button></a>
-                            </div>
-                        </div>
+{% endfor %}
                      
             </div>
         </section>

@@ -43,10 +43,8 @@
     <section class="section">
             <div class="container">
                 <header class="section__title">
-                    <h2>Add A Trip</h2>
+                    <h2>Application Successful!</h2>
                     <small>Not only a trip but a memory</small>
-                    <br/>
-                    <h3 style="color:red">{{mess}}</h3>
                 </header>
 
                 <div class="submit-property">
@@ -54,86 +52,18 @@
 
                     <div class="tab-content submit-property__content">
                         <div class="tab-pane fade in active" id="submit-property-1">
-                            <div class="card">
-                                <div class="card__header">
-                                    <h2>Info on the Trip</h2>
-                                </div>
+                              <div class="card">
+                                <div class="submit-property__success">
+                                   
 
-                                <form class="card__body" action="/carpool/addTrip/" method="POST">
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="text" class="form-control" name="name">
-                                        <i class="form-group__bar"></i>
-                                        <label>Name of Your Trip</label>
-                                    </div>
-                                        <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="text" class="form-control text-center" name="departure"> 
-                                        <i class="form-group__bar"></i>
-                                        <label>Departure Location</label>
-                                    </div>
-                                        <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="text" class="form-control text-center" name="arrival">
-                                        <i class="form-group__bar"></i>
-                                        <label>Arrival Location</label>
-                                    </div>
-                                    <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="number" class="form-control text-center" name="price">
-                                        <i class="form-group__bar"></i>
-                                        <label>Price (if free just say 0)</label>
-                                    </div>
-                                    <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="number" class="form-control text-center" name="numSeats">
-                                        <i class="form-group__bar"></i>
-                                        <label>Number of seats available</label>
-                                    </div>
-                                    <br/><br/><br/>
-                                     <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="password" class="form-control" name="tripPass">
-                                        <i class="form-group__bar"></i>
-                                        <label>Trip Password (For Login)</label>
-                                    </div>
-                                        <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                        <input autocomplete="off" type="number" class="form-control text-center" name="bags">
-                                        <i class="form-group__bar"></i>
-                                        <label>Number of bags each person can bring</label>
-                                    </div>
-                                    <br/><br/><br/>
-                                     <div class="form-group form-group--float m-b-5">
-                                     Date of Trip<br/>
-                                        <input autocomplete="off" type="date" class="form-control text-center" name="departDate">
-                                        
-                                    </div>
-                                    <br/><br/><br/>
-                                        <div class="form-group form-group--float m-b-5">
-                                        Application Deadline<br/>
-                                        <input autocomplete="off" type="date" class="form-control text-center" name="AppDead">
+                                    <h2>Trip Application Successful!</h2>
                                     
-                                    </div>
-                                    <br/><br/><br/>
+                                    <p>Congrats, you applied for a trip!
+                                    we hope you get it; you will recieve an email or phone call/text if you receive a seat!
+                                   </p>
 
-                                    <div class="form-group form-group--float m-b-5">
-                                         <textarea class="form-control textarea-autoheight" name="summ"></textarea>
-                                    <label>Anything else you want people to know</label>
-                                    </div>
-                                    <br/><br/><br/>
-
-                                    <div class="form-group form-group--float m-b-5">
-                                         <textarea class="form-control textarea-autoheight" name="youInfo"></textarea>
-                                    <label>Information on you</label>
-                                    </div>
-                                        <br/><br/><br/>
-
-                                    <a href="/search/"><button class="btn btn-primary">Add Trip</button></a>
-                                </form>
+                                    <a href="/carpool/{{tripName}}/"><button class="btn btn-primary">Back To Trip Page</button></a>
+                                </div>
                             </div>
                         </div>
 
@@ -144,14 +74,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="submit-property-5">
-                            <div class="card">
-                                <div class="submit-property__success">
-                                    <i class="zmdi zmdi-check"></i>
-
-                                    <h2>Successful!</h2>
-                                    <p>Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
