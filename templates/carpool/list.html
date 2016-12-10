@@ -44,25 +44,27 @@
             <div class="container">
                 <header class="section__title">
                     <h2>Search Results</h2>
-                    <small>Information</small>
                 </header>
 
                 <div class="row">
                     <div class="col-sm-12 listings-list">
+
+
+                    {% for trip in trips %}
                         <div class="listings-grid__item">
-                            <a href="/carpool/detail/" class="media">
+                            <a href="/carpool/{{trip[0]}}/" class="media">
                                 <div class="listings-grid__main pull-left">
                                     <img src="{{ url_for('static', filename='road.jpg')}}" alt="">
-                                    <div class="listings-grid__price">$1,200,000</div>
+                                    <div class="listings-grid__price">${{trip[1]}}</div>
                                 </div>
 
                                 <div class="media-body">
                                     <div class="listings-grid__body">
-                                        <small>304 East Wenatchee, WA 98801</small>
-                                        <h5>Nullam iddolor idnibh ultricies vehicula</h5>
+                                        <small>{{trip[0]}}</small>
+                                        <h5>{{trip[2]}} - {{trip[3]}}</h5>
                                     </div>
                                     <ul class="listings-grid__attrs">
-                                        <li>Avaiable Seats: 01</li>
+                                        <li>Avaiable Seats: {{trip[4]}}</li>
                                     </ul>
                                 </div>
                             </a>
@@ -77,208 +79,7 @@
                         </div>
                       
 
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/10.jpg" alt="">
-                                    <div class="listings-grid__price">$575,000</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>677 Morris Lemont, IL 60439</small>
-                                        <h5>Praesent commodo cursus scelerisque consectetur</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 01</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 01</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 01</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/11.jpg" alt="">
-                                    <div class="listings-grid__price">$4299,000</div>
-
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>451 Henry Livingston, NJ 07039</small>
-                                        <h5>Morbi leorisus consectetur vestibulum</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 06</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 06</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 03</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/12.jpg" alt="">
-                                    <div class="listings-grid__price">$2,329,980</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>722 Chestnut Dublin, GA 31021</small>
-                                        <h5>Curabitur blandit tempus porttitor</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 04</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 04</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 04</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/13.jpg" alt="">
-                                    <div class="listings-grid__price">$1,100,900</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>409 Magnolia Mansfield, MA 02048</small>
-                                        <h5>Aenean Pellentesque lacinia quam venenatis vestibulum</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 02</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 02</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 01</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/14.jpg" alt="">
-                                    <div class="listings-grid__price">$3,400,110</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>277 Elm Avenue, TN 37128</small>
-                                        <h5>Cras mattis consectetur purus sit amet fermentum</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 05</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 02</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 02</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/15.jpg" alt="">
-                                    <div class="listings-grid__price">$1,200,000</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>304 East Wenatchee, WA 98801</small>
-                                        <h5>Nullam iddolor idnibh ultricies vehicula</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 01</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 01</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 00</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="listings-grid__item">
-                            <a href="listing-detail.html" class="media">
-                                <div class="pull-left listings-grid__main">
-                                    <img src="img/demo/listing/thumbs/16.jpg" alt="">
-                                    <div class="listings-grid__price">900,900</div>
-                                </div>
-
-                                <div class="media-body">
-                                    <div class="listings-grid__body">
-                                        <small>735 San Angelo, TX 76901</small>
-                                        <h5>Cras justo odio dapibus facilisis egestas</h5>
-                                    </div>
-
-                                    <ul class="listings-grid__attrs">
-                                        <li><i class="listings-grid__icon listings-grid__icon--bed"></i> 02</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--bath"></i> 01</li>
-                                        <li><i class="listings-grid__icon listings-grid__icon--parking"></i> 01</li>
-                                    </ul>
-                                </div>
-                            </a>
-
-                            <div class="actions listings-grid__favorite">
-                                <div class="actions__toggle">
-                                    <input type="checkbox">
-                                    <i class="zmdi zmdi-favorite-outline"></i>
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </div>
-                            </div>
-                        </div>
+                     {% endfor %}
 
                       
                     </div>
@@ -289,7 +90,7 @@
 
      
  <aside id="advanced-search" class="rmd-sidebar">
-            <form class="card">
+            <form class="card" action="/carpool/search/" method="POST">
                 <div class="card__header">
                     <h2>Advanced Property Search</h2>
 
@@ -308,31 +109,31 @@
 
                 <div class="card__body m-t-20">
                  <div class="form-group form-group--float">
-                        <input type="text" class="form-control" value="">
+                        <input type="text" class="form-control" value="" name="name">
                         <label class="fg-float">Trip Name</label>
                         <i class="form-group__bar"></i>
                     </div><br/>
                     <div class="form-group form-group--float">
-                        <input type="text" class="form-control" value="New York, NY">
+                        <input type="text" class="form-control" value="New York, NY" name="dep">
                         <label class="fg-float">Departure Location</label>
                         <i class="form-group__bar"></i>
                     </div><br/>
                      <div class="form-group form-group--float">
-                        <input type="text" class="form-control" value="Houston, TX">
+                        <input type="text" class="form-control" value="Houston, TX" name="arr">
                         <label class="fg-float">Arrival Location</label>
                         <i class="form-group__bar"></i>
                     </div>
 
-                   
+               
 
-
-                   
                 </div>
 
                 <div class="card__footer">
-                    <button class="btn btn-sm btn-primary">Search</button>
+ <input type="submit" name="Search" value="Search" class="btn btn-primary">
                     <a href="" class="btn btn-link" data-rmd-action="block-close" data-rmd-target="#advanced-search">Cancel</a>
+                
                 </div>
+                
             </form>
         </aside>
 
@@ -340,7 +141,7 @@
             <div class="container hidden-xs">
                 <div class="row">
                     
-                                     <h4 style="float:right"><u><a href="#" style="color:white">Add A Trip</a></u></h4>
+                                     <h4 style="float:right"><u><a href="/carpool/add/" style="color:white">Add A Trip</a></u></h4>
                       
                 </div>
             </div>

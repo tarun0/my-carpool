@@ -38,7 +38,7 @@
    </center>
      
             <div class="header__search container">
-                <form action="/carpool/search/">
+                <form action="/carpool/search/" method="POST">
                     <div class="search">
                         <div class="search__type dropdown">
                             <a href="" data-toggle="dropdown">
@@ -49,12 +49,12 @@
                         </div>
 
                         <div class="search__body">
-                            <input type="text" class="search__input" placeholder="Search For A Trip" data-rmd-action="advanced-search-open">
+                            <input type="text" class="search__input" placeholder="Search For A Trip" data-rmd-action="advanced-search-open" name="name">
 
                             <div class="search__advanced">
                                 <div class="col-sm-6">
                                     <div class="form-group form-group--float">
-                                        <input type="text" class="form-control" value="Houston, TX">
+                                        <input type="text" class="form-control" value="Houston, TX" name="arr">
                                         <label>Arrival Location</label>
                                         <i class="form-group__bar"></i>
                                     </div>
@@ -63,7 +63,7 @@
                                 <div class="col-sm-6">
                                  
                                 <div class="form-group form-group--float">
-                                        <input type="text" class="form-control" value="New York, NY">
+                                        <input type="text" class="form-control" value="New York, NY" name="dep">
                                         <label>Departure Location</label>
                                         <i class="form-group__bar"></i>
                                     </div>
@@ -79,7 +79,7 @@
                             
 
                                 <div class="col-xs-12 m-t-10">
-                                    <a href="/carpool/search/"><button class="btn btn-primary">Search</button></a>
+                                    <input type="submit" name="Search" value="Search" class="btn btn-primary">
                                     <button class="btn btn-link" data-rmd-action="advanced-search-close">Cancel</button>
                                 </div>
                             </div>

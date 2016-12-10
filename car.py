@@ -100,10 +100,48 @@ def addApplicant(tripName,name,phone,email,mess):
 def getApplicants(tripName):
 	a = eval(getResp(tripName+"applicants"))
 	for i in range(len(a)):
-		a[i] = eval(a[i])
+		a[i] = eval(str(a[i]))
 	return a
 
-
+def deleteApplicant(tripName,name):
+	a = eval(getResp(tripName+"applicants"))
+	for i in range(len(a)):
+		a[i] = eval(str(a[i]))
+	for i in range(len(a)):
+		if a[i][0] == name:
+			a.pop(i)
+			firebase.delete(tripName+"applicants",None)
+			print "4"
+			firebase.post(tripName+"applicants",str(a))
+			return
+def search(name,dep,arr):
+	res = []
+	trips = eval(getResp("trips"))
+	tripslower = eval(getResp("trips").lower())
+	if len(name) > 0:
+		for i in trips:
+			#print eval(str(getResp(i+"Glance")).lower())
+			g = eval(str(getResp(i+"Glance")).lower())
+			if name in tripslower[trips.index(i)]:
+				res.append([i]+g)
+			else:
+				if (dep in g[1] or g[1].lower() in dep) and len(dep) > 0:
+					res.append([i]+g)
+				elif (arr in g[2] or g[2].lower()  in arr) > 0:
+					res.append([i]+g)
+		print res
+		return res
+	else:
+		for i in trips:
+			g = eval(str(getResp(i+"Glance")).lower())
+			if (dep in g[1] or g[1].lower() in dep) and len(dep) > 0:
+				res.append([i]+g)
+			elif (arr in g[2] or g[2].lower()  in arr) and len(arr) > 0:
+				res.append([i]+g)
+		print res
+		return res
+#print search("","new mexico","purdue")
+#print getApplicants("Abirs Trip")
 #addApplicant("Abirs Trip","Abir","713-231-7925","shukla14@purdue.edu","I would love to be a part of this")
 
 #addApplicant("Abirs Trip","Chini","71323112","chini@gmail.com","This is dope")

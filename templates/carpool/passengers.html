@@ -58,8 +58,11 @@
                                
                                 <p> Email: {{app[2]}}, Phone: {{app[1]}}</p>
                                 <hr/>
-
-                                    <a href="/search/"><button class="btn btn-danger">Remove</button></a>
+                                    <form class="card__body" action="/carpool/deleteApp/" method="POST">
+                                    <input type="hidden" name="name" value="{{app[0]}}"/>
+                                    <input type="hidden" name="tripName" value="{{name}}">
+                                   <input class="btn btn-danger" type="submit" value="Remove"/>
+                                    </form>
                             </div>
                         </div>
 {% endfor %}

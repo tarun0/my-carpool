@@ -8,22 +8,28 @@ import car
 app = Flask(__name__)
 
 @app.route('/carpool/')
-def goHome():
+def goCarHome():
 	print "Home"
 	return render_template("carpool/home.html")
-@app.route('/carpool/search/')
-def getSearch():
+@app.route('/carpool/search/',methods=['POST'])
+def getCarSearch(name = None, arr = None, dep = None, trips = None):
+	name = request.form["name"].lower()
+	arr = request.form["arr"].lower()
+	dep = request.form["dep"].lower()
+	print "Name: "+name
+	print "Arr: "+arr
+	print "Dep: "+dep
 	print "Search"
-	return render_template("carpool/list.html")
+	trips = []
+	trips = car.search(name,arr,dep)
+	return render_template("carpool/list.html",trips = trips)
 
 @app.route("/carpool/add/")
-def addTrip():
+def addCarTrip():
 	return render_template("carpool/add.html")
-@app.route("/carpool/detail/")
-def detailForTrip():
-	return render_template("carpool/detail.html")
+
 @app.route("/carpool/<name>/")
-def detailForUserTrip(name,departure=None,arrival=None,price=None,numSeats=None,bags=None,summ=None,youInfo=None,departDate = None,googleA = None, googleD = None):
+def detailCarForUserTrip(name,departure=None,arrival=None,price=None,numSeats=None,bags=None,summ=None,youInfo=None,departDate = None,googleA = None, googleD = None):
 	print "Some"
 	price,departure,arrival,numSeats,bags,departDate,summ,youInfo = car.getTripInfo(name)
 	googleD = departure.replace(" ","+")
@@ -31,10 +37,10 @@ def detailForUserTrip(name,departure=None,arrival=None,price=None,numSeats=None,
 	print "2"
 	return render_template("carpool/detail.html",name=name,price = price,departure=departure,arrival=arrival,numSeats=numSeats,departDate=departDate,bags=bags,summ=summ,youInfo=youInfo,googleA=googleA,googleD = googleD)
 @app.route("/carpool/tripLogin/")
-def loginToTrip():
+def loginCarToTrip():
 	return render_template("carpool/login.html")
 @app.route('/carpool/loginTrip/',methods=['POST'])	
-def tripLoginAccount(name = None,passw = None,applicants = None):
+def tripCarLoginAccount(name = None,passw = None,applicants = None):
 	name = str(request.form["name"])
 	passw = str(request.form["passw"])
 	print name,passw
@@ -45,14 +51,25 @@ def tripLoginAccount(name = None,passw = None,applicants = None):
 		print "third"
 		applicants = car.getApplicants(name)
 		print "Second to last"
-		return render_template("carpool/passengers.html",applicants = applicants)
+		return render_template("carpool/passengers.html",applicants = applicants,name=name)
 	else:
 		
 		return render_template("carpool/login.html",mess="Invalid Credentials")
+@app.route('/carpool/deleteApp/',methods=['POST'])
+def deleteCarApplicants(tripName = None, name = None,applicants = None):
+	name = str(request.form["name"])
+	tripName = str(request.form["tripName"])
+	car.deleteApplicant(tripName,name)
+	name = tripName
+	applicants = []
+	print "third"
+	applicants = car.getApplicants(name)
+	print "Second to last"
+	return render_template("carpool/passengers.html",applicants = applicants,name=name)
 
 
 @app.route('/carpool/addTrip/',methods=['POST'])
-def addTheTrip(name = None,departure=None,arrival=None,price=None,numSeats=None,tripPass=None,bags=None,summ=None,youInfo=None,departDate = None,closeDate = None):
+def addTheTripCar(name = None,departure=None,arrival=None,price=None,numSeats=None,tripPass=None,bags=None,summ=None,youInfo=None,departDate = None,closeDate = None):
 	name = request.form['name']
 	departure = request.form['departure']
 	arrival = request.form['arrival']
@@ -81,7 +98,7 @@ def addTheTrip(name = None,departure=None,arrival=None,price=None,numSeats=None,
 	return render_template("carpool/succ.html",tripPass=tripPass,name=name)
 
 @app.route('/carpool/applyForTrip/',methods=['POST'])
-def applyforthetrip(name = None, email= None, phone = None,tripName = None,mess = None):
+def applyforthetripCar(name = None, email= None, phone = None,tripName = None,mess = None):
 	name = request.form["name"]
 	email = request.form["email"]
 	phone = request.form["phone"]
