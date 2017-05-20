@@ -1,3 +1,3 @@
 # CarPool
 CarPool is a web application that allows people to connect with people in there area for road trip and shared rides to a common destination. Carpool allows users to create, apply, and search for trips to take with other people. Trip details include number of seats available, amount of bags each passenger can have, price, departure/arrival locations, summary of the trip and host, date of the trip, and a google map of the trip. This is not a uber/lyft clone; this is aimed at groups of people going on a "carpool". Users can apply to trips, share trips (via facebook, twitter, or email), and review users that have applied to theirs.
-<br/> Web App Link: http://abirshukla.pythonanywhere.com/carpool/
+<br/> Web App Link:
